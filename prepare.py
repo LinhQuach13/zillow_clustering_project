@@ -88,24 +88,58 @@ def miss_dup_values(df):
 
 
 
-def split_zillow(df, target):
+def outlier_bound_calculation(df, variable):
     '''
-    this function takes in the zillow dataframe
-    splits into train, validate and test subsets
-    then splits for X (features) and y (target)
+    calcualtes the lower and upper bound to locate outliers in variables
     '''
-    # split df into 20% test, 80% train_validate
-    train_validate, test = train_test_split(df, test_size=0.2, random_state=1234)
-    # split train_validate into 30% validate, 70% train
-    train, validate = train_test_split(train_validate, test_size=0.3, random_state=1234)
-    # Split with X and y
-    X_train = train.drop(columns=[target])
-    y_train = train[target]
-    X_validate = validate.drop(columns=[target])
-    y_validate = validate[target]
-    X_test = test.drop(columns=[target])
-    y_test = test[target]
-    return train, validate, test, X_train, y_train, X_validate, y_validate, X_test, y_test
+    quartile1, quartile3 = np.percentile(df[variable], [25,75])
+    IQR_value = quartile3 - quartile1
+    lower_bound = quartile1 - (1.5 * IQR_value)
+    upper_bound = quartile3 + (1.5 * IQR_value)
+    '''
+    returns the lowerbound and upperbound values
+    '''
+    return print(f'For {variable} the lower bound is {lower_bound} and  upper bound is {upper_bound}')
+
+
+
+
+# def remove_outliers(df):
+#     '''
+#     remove outliers in bed, bath, zip, square feet, acres & tax rate
+#     '''
+
+#     return df[((df.bathroomcnt <= 7) & (df.bedroomcnt <= 7) & 
+#                (df.regionidzip < 100000) & 
+#                (df.bathroomcnt > 0) & 
+#                (df.bedroomcnt > 0) & 
+#                (df.acres < 20) &
+#                (df.calculatedfinishedsquarefeet < 10000) & 
+#                (df.taxrate < 10)
+#               )]
+
+
+
+
+# def split_zillow(df, target):
+#     '''
+#     this function takes in the zillow dataframe
+#     splits into train, validate and test subsets
+#     then splits for X (features) and y (target)
+#     '''
+#     # split df into 20% test, 80% train_validate
+#     train_validate, test = train_test_split(df, test_size=0.2, random_state=1234)
+#     # split train_validate into 30% validate, 70% train
+#     train, validate = train_test_split(train_validate, test_size=0.3, random_state=1234)
+#     # Split with X and y
+#     X_train = train.drop(columns=[target])
+#     y_train = train[target]
+#     X_validate = validate.drop(columns=[target])
+#     y_validate = validate[target]
+#     X_test = test.drop(columns=[target])
+#     y_test = test[target]
+#     return train, validate, test, X_train, y_train, X_validate, y_validate, X_test, y_test
+
 
 
 
@@ -185,3 +219,50 @@ def create_features(df):
     df['bath_bed_ratio'] = df.bathroomcnt/df.bedroomcnt
 
     return df
+
+
+
+
+def split_continuous(df):
+    """
+    Takes in a df
+    Returns train, validate, and test DataFrames
+    """
+    # Create train_validate and test datasets
+    train_validate, test = train_test_split(df, test_size=0.2, random_state=123)
+    # Create train and validate datsets
+    train, validate = train_test_split(train_validate, test_size=0.3, random_state=123)
+    # Take a look at your split datasets
+    print(f"train -> {train.shape}")
+    print(f"validate -> {validate.shape}")
+    print(f"test -> {test.shape}")
+    return train, validate, test
+
+
+
+
+def train_validate_test(df, target):
+    """
+    this function takes in a dataframe and splits it into 3 samples,
+    a test, which is 20% of the entire dataframe,
+    a validate, which is 24% of the entire dataframe,
+    and a train, which is 56% of the entire dataframe.
+    It then splits each of the 3 samples into a dataframe with independent variables
+    and a series with the dependent, or target variable.
+    The function returns 3 dataframes and 3 series:
+    X_train (df) & y_train (series), X_validate & y_validate, X_test & y_test.
+    """
+    # split df into test (20%) and train_validate (80%)
+    train_validate, test = train_test_split(df, test_size=0.2, random_state=123)
+    # split train_validate off into train (70% of 80% = 56%) and validate (30% of 80% = 24%)
+    train, validate = train_test_split(train_validate, test_size=0.3, random_state=123)
+    # split train into X (dataframe, drop target) & y (series, keep target only)
+    X_train = train.drop(columns=[target])
+    y_train = train[target]
+    # split validate into X (dataframe, drop target) & y (series, keep target only)
+    X_validate = validate.drop(columns=[target])
+    y_validate = validate[target]
+    # split test into X (dataframe, drop target) & y (series, keep target only)
+    X_test = test.drop(columns=[target])
+    y_test = test[target]
+    return X_train, y_train, X_validate, y_validate, X_test, y_test
