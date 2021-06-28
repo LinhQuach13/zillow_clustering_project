@@ -57,7 +57,8 @@ Feature,Description
 'assessmentyear',The year of the property tax assessment 
 'taxdelinquencyflag',Property taxes for this parcel are past due as of 2015
 'taxdelinquencyyear',Year for which the unpaid propert taxes were due 
-logerror_bins',Logerror column in bins
-cluster_latitude_caculatedsqft',Cluster column made with latitude and calculated square feet
-cluster_latitude_longitude',Cluster column made with latitude and longitude
-cluster_latitude_yearbuilt',Cluster column made with latitude and yearbuilt
+ 'logerror',𝑙𝑜𝑔𝑒𝑟𝑟𝑜𝑟=𝑙𝑜𝑔(𝑍𝑒𝑠𝑡𝑖𝑚𝑎𝑡𝑒)−𝑙𝑜𝑔(𝑆𝑎𝑙𝑒𝑃𝑟𝑖𝑐𝑒)
+ 'logerror_bins',Logerror column in bins
+ 'cluster_latitude_caculatedsqft',Cluster column made with latitude and calculated square feet
+ 'cluster_latitude_longitude',Cluster column made with latitude and longitude
+ 'cluster_latitude_yearbuilt',Cluster column made with latitude and yearbuilt
