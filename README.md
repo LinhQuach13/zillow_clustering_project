@@ -69,10 +69,10 @@ Here is a snapshot of my project planning from my Trello Board
 > - $H_a$: calculatedfinishedsquarefeet has a relationship with logerror. 
 
 ### Hypothesis 2:
-> - **Hypothesis 2 -** I rejected the Null Hypothesis; there is a difference in the means.
+> - **Hypothesis 2 -** I do not reject the Null Hypothesis; there is a difference in the means.
 > - alpha = .05
-> - $H_0$: There is no difference in means between bedroom count and logerror. 
-> - $H_a$: There is a difference in means between bedroom count and logerror. 
+> - $H_0$: There is no difference in means between bathroom count and logerror. 
+> - $H_a$: There is a difference in means between bathroom count and logerror. 
 
 ### Hypothesis 3:
 > - **Hypothesis 3 -** I rejected the Null Hypothesis; there is a relationship.
