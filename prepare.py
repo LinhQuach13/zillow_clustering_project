@@ -39,6 +39,8 @@ def remove_outliers(df, k, col_list):
         return df[(df[f'{col}'] > lower_bound) & (df[f'{col}'] < upper_bound)]  
     
 
+
+    
 def handle_missing_values(df, prop_required_column = .6, prop_required_row = .5):
     ''' 
         take in a dataframe and a proportion for columns and rows
@@ -53,6 +55,8 @@ def handle_missing_values(df, prop_required_column = .6, prop_required_row = .5)
     df.dropna(axis=0, thresh=row_thresh, inplace=True) # drop columns with non-nulls less than threshold
     
     return df    
+    
+
     
 
 
@@ -88,6 +92,7 @@ def miss_dup_values(df):
 
 
 
+
 def outlier_bound_calculation(df, variable):
     '''
     calcualtes the lower and upper bound to locate outliers in variables
@@ -104,55 +109,6 @@ def outlier_bound_calculation(df, variable):
 
 
 
-# def remove_outliers(df):
-#     '''
-#     remove outliers in bed, bath, zip, square feet, acres & tax rate
-#     '''
-
-#     return df[((df.bathroomcnt <= 7) & (df.bedroomcnt <= 7) & 
-#                (df.regionidzip < 100000) & 
-#                (df.bathroomcnt > 0) & 
-#                (df.bedroomcnt > 0) & 
-#                (df.acres < 20) &
-#                (df.calculatedfinishedsquarefeet < 10000) & 
-#                (df.taxrate < 10)
-#               )]
-
-
-
-
-# def split_zillow(df, target):
-#     '''
-#     this function takes in the zillow dataframe
-#     splits into train, validate and test subsets
-#     then splits for X (features) and y (target)
-#     '''
-#     # split df into 20% test, 80% train_validate
-#     train_validate, test = train_test_split(df, test_size=0.2, random_state=1234)
-#     # split train_validate into 30% validate, 70% train
-#     train, validate = train_test_split(train_validate, test_size=0.3, random_state=1234)
-#     # Split with X and y
-#     X_train = train.drop(columns=[target])
-#     y_train = train[target]
-#     X_validate = validate.drop(columns=[target])
-#     y_validate = validate[target]
-#     X_test = test.drop(columns=[target])
-#     y_test = test[target]
-#     return train, validate, test, X_train, y_train, X_validate, y_validate, X_test, y_test
-
-
-
-
-
-# def get_heatmap(df, target):
-#     '''
-#     This method will return a heatmap of all variables and there relation to logerror
-#     '''
-#     plt.figure(figsize=(14,12))
-#     heatmap = sns.heatmap(df.corr()[[target]].sort_values(by=target, ascending=False), annot=True, linewidth=0.5,fmt = '.0%',cmap = 'mako', center = 0)
-#     heatmap.set_title('Feautures  Correlating with {}'.format(target))
-    
-#     return heatmap
 
 
 
@@ -166,6 +122,8 @@ def get_heatmap(col_list, target,  color = 'mako'):
     heatmap.set_title('Feautures  Correlating with {}'.format(target))
     
     return heatmap
+
+
 
 
 
