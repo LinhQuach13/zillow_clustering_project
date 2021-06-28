@@ -97,7 +97,6 @@ Here is a snapshot of my project planning from my Trello Board
  
   - All models performed relatively the same but the Polynomial Regression Model with the clusters performed the best
     - RMSE: 0.045734
-    - Outperformed baseline by 0.007 %
   
   - The models I created were a  Linear Regression, Lasso Lars, and Polynomial Regression Model. All of the models outperformed the baseline. I chose was the Polynomial Regression Model as my best model with a 0.007 % improvement for predicting features of Logerror.
   
