@@ -32,7 +32,7 @@ Here is a snapshot of my project planning from my Trello Board
 
 #### Data Dictionary
     
-- This is a data dictionary as a reference for the variables used within in the data set.
+- This is a data dictionary as a reference for the variables used within in the data set. A sample of what is included in data dictionary is below. Please refer to zillow_data_dictionary.csv for more details.
 
 
  |   Target    |  Data Type   | Description    |
