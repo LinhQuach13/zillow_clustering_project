@@ -37,7 +37,7 @@ Here is a snapshot of my project planning from my Trello Board
 
  |   Target    |  Data Type   | Description    |
 | :------------- | :----------: | -----------: |
-|  taxvaluedollarcnt | float64   | The total tax assessed value of the parcel |
+| logerror| | 𝑙𝑜𝑔𝑒𝑟𝑟𝑜𝑟=𝑙𝑜𝑔(𝑍𝑒𝑠𝑡𝑖𝑚𝑎𝑡𝑒)−𝑙𝑜𝑔(𝑆𝑎𝑙𝑒𝑃𝑟𝑖𝑐𝑒)
 
 
 
