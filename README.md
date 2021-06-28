@@ -9,6 +9,12 @@
 > - Your audience for this project is a data science team. The presentation will consist of a notebook demo of the discoveries you made and work you have done related to uncovering what the drivers of the error in the zestimate is.
 
 
+#### Project Goals
+> -  Find drivers of logerror.
+
+> - Construct a model that helps us better predict logerror.
+
+
 ### Project Planning 
 
 The following link contains my project planning process on my Trello Board: https://trello.com/b/s5Tb32WM/zillow-cluster-project
